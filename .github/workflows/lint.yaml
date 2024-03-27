@@ -14,3 +14,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Create Terraform lint file
+        run: |
+          echo "This is a Terraform lint file" > tflint
+
+      - name: Terraform validate
+        uses: dflook/terraform-validate@v1
+        with:
+          path: .
