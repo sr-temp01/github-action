@@ -19,7 +19,12 @@ jobs:
         run: |
           echo "This is a Terraform lint file" > tflint
 
+      - name: check the directory
+        run: |
+          pwd
+          ls
+
       - name: Terraform validate
         uses: dflook/terraform-validate@v1
         with:
-          path: .
+          path: github
