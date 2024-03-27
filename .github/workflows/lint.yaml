@@ -11,3 +11,6 @@ jobs:
     steps:
       - name: Print Hello World
         run: echo "Hello, World!"
+
+      - name: Checkout
+        uses: actions/checkout@v3
