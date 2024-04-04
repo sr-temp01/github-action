@@ -11,6 +11,10 @@ provider "github" {
   token = var.token
 }
 
+data "github_user" "self" {
+  username = "soniyaraibagi"
+}
+
 data "github_organization" "temp" {
   name = "sr-temp01"
 }
