@@ -29,5 +29,5 @@ resource "github_membership" "soniyaraibagi" {
 }
 
 output "github_membership_data" {
-  value = github_membership.user
+  value = github_membership.soniyaraibagi
 }
