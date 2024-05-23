@@ -1,0 +1,28 @@
+name: Sync Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Target Repo
+      uses: actions/checkout@v2
+
+    - name: Sync with Source Repo
+      run: |
+        git config --global user.name "your user name"
+        git config --global user.email "your email"
+        git clone https://${{ secrets.SYNC_TOKEN }}@github.com/sr-temp01/tfenv.git
+        cd tfenv
+        git remote add source https://${{ secrets.SYNC_TOKEN }}@github.com/sr-temp01/${{ env.SOURCE_REPO_NAME }}.git
+        git fetch source
+        git merge source/main --allow-unrelated-histories -m "Sync from source repository"
+        git push origin main
+      env:
+        SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        SOURCE_REPO_NAME: source-repo
